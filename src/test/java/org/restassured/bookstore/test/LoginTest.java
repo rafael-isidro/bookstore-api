@@ -2,11 +2,10 @@ package org.restassured.bookstore.test;
 
 import client.LoginClient;
 import data.factory.LoginDataFactory;
-import io.qameta.allure.Description;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Story;
+import io.qameta.allure.*;
+import io.restassured.response.Response;
 import models.request.LoginRequestModel;
-import models.response.LoginResponseModel;
+import models.response.ResponseModel;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -20,8 +19,13 @@ import static story.LoginStory.*;
 @ExtendWith(TestListener.class)
 public class LoginTest {
 
-    public static final String STATUS_SUCCESS = "Success";
-    public static final String RESULT_SUCCESS = "User authorized successfully.";
+    private static final String STATUS_SUCCESS = "Success";
+    private static final String STATUS_FAIL = "Failed";
+
+    private static final String RESULT_SUCCESS = "User authorized successfully.";
+    private static final String RESULT_AUTHORIZATION_FAIL = "User authorization failed.";
+    private static final String EMPTY_CREDENTIALS_FAIL = "UserName and Password required.";
+
     private final LoginClient loginClient = new LoginClient();
 
     @Test
@@ -29,13 +33,90 @@ public class LoginTest {
     public void testValidarLoginComSucesso() {
         LoginRequestModel loginModel = LoginDataFactory.validLogin();
 
-        LoginResponseModel response = loginClient.login(loginModel)
+        ResponseModel response = loginClient.login(loginModel)
                 .then()
                     .statusCode(HttpStatus.SC_OK)
                     .extract()
-                    .as(LoginResponseModel.class);
+                    .as(ResponseModel.class);
 
         Assertions.assertEquals(STATUS_SUCCESS, response.getStatus());
         Assertions.assertEquals(RESULT_SUCCESS, response.getResult());
     }
+
+    @Test
+    @Description(CT_LOGIN_002)
+    public void testLoginComDadosInvalidos() {
+        LoginRequestModel loginModel = LoginDataFactory.invalidLogin();
+
+        ResponseModel response = loginClient.login(loginModel)
+                .then()
+                    .extract()
+                    .as(ResponseModel.class);
+
+        Assertions.assertNull(response.getToken());
+        Assertions.assertEquals(STATUS_FAIL, response.getStatus());
+        Assertions.assertEquals(RESULT_AUTHORIZATION_FAIL, response.getResult());
+    }
+
+    @Test
+    @Description(CT_LOGIN_003)
+    public void testLoginComSenhaInvalida() {
+        LoginRequestModel loginModel = LoginDataFactory.invalidLoginWithInvalidPassword();
+
+        ResponseModel response = loginClient.login(loginModel)
+                .then()
+                    .extract()
+                    .as(ResponseModel.class);
+
+        Assertions.assertNull(response.getToken());
+        Assertions.assertEquals(STATUS_FAIL, response.getStatus());
+        Assertions.assertEquals(RESULT_AUTHORIZATION_FAIL, response.getResult());
+    }
+
+    @Test
+    @Description(CT_LOGIN_004)
+    public void testLoginComUsernameInvalida() {
+        LoginRequestModel loginModel = LoginDataFactory.invalidLoginWithInvalidUsername();
+
+        ResponseModel response = loginClient.login(loginModel)
+                .then()
+                    .extract()
+                    .as(ResponseModel.class);
+
+        Assertions.assertNull(response.getToken());
+        Assertions.assertEquals(STATUS_FAIL, response.getStatus());
+        Assertions.assertEquals(RESULT_AUTHORIZATION_FAIL, response.getResult());
+    }
+
+    @Test
+    @Description(CT_LOGIN_005)
+    public void testLoginComUsernameVazio() {
+        LoginRequestModel loginModel = LoginDataFactory.invalidLoginWithEmptyUsername();
+
+        String response = loginClient.login(loginModel)
+                .then()
+                    .statusCode(HttpStatus.SC_BAD_REQUEST)
+                    .extract()
+                    .path("message")
+                        .toString();
+
+        Assertions.assertEquals(EMPTY_CREDENTIALS_FAIL, response);
+    }
+
+    @Test
+    @Description(CT_LOGIN_006)
+    public void testLoginComPasswordVazio() {
+        LoginRequestModel loginModel = LoginDataFactory.invalidLoginWithEmptyPassword();
+
+        String response = loginClient.login(loginModel)
+                .then()
+                    .statusCode(HttpStatus.SC_BAD_REQUEST)
+                    .extract()
+                    .path("message")
+                        .toString();
+
+        Assertions.assertEquals(EMPTY_CREDENTIALS_FAIL, response);
+    }
+
+
 }

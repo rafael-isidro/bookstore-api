@@ -3,10 +3,6 @@ package client;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import models.request.LoginRequestModel;
-import models.request.SignupRequestModel;
-import models.response.LoginResponseModel;
-import models.response.SignupResponseModel;
-import org.apache.http.HttpStatus;
 
 import static io.restassured.RestAssured.given;
 
