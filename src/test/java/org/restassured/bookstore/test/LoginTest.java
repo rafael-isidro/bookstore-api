@@ -2,8 +2,9 @@ package org.restassured.bookstore.test;
 
 import client.LoginClient;
 import data.factory.LoginDataFactory;
-import io.qameta.allure.*;
-import io.restassured.response.Response;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Story;
 import models.request.LoginRequestModel;
 import models.response.ResponseModel;
 import org.apache.http.HttpStatus;

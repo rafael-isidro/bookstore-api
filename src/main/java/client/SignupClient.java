@@ -5,7 +5,7 @@ import models.request.SignupRequestModel;
 import models.response.SignupResponseModel;
 import org.apache.http.HttpStatus;
 
-import static io.restassured.RestAssured.*;
+import static io.restassured.RestAssured.given;
 
 public class SignupClient extends BaseClient {
 
