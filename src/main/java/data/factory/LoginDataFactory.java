@@ -33,18 +33,34 @@ public class LoginDataFactory {
         return user;
     }
 
-    public static LoginRequestModel invalidLoginWithInvalidPassword(String login){
+    public static LoginRequestModel invalidLoginWithInvalidPassword(){
 
         LoginRequestModel user = invalidLogin();
-        user.setUserName(login);
+        user.setUserName(USER_LOGIN_PROP);
 
         return user;
     }
 
-    public static LoginRequestModel invalidLoginWithInvalidEmail(String password){
+    public static LoginRequestModel invalidLoginWithInvalidUsername(){
 
         LoginRequestModel user = invalidLogin();
-        user.setPassword(password);
+        user.setPassword(USER_PSW_PROP);
+
+        return user;
+    }
+
+    public static LoginRequestModel invalidLoginWithEmptyUsername(){
+
+        LoginRequestModel user = new LoginRequestModel();
+        user.setPassword(USER_PSW_PROP);
+
+        return user;
+    }
+
+    public static LoginRequestModel invalidLoginWithEmptyPassword(){
+
+        LoginRequestModel user = new LoginRequestModel();
+        user.setUserName(USER_LOGIN_PROP);
 
         return user;
     }
