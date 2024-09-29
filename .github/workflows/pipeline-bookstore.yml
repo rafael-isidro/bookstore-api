@@ -50,6 +50,7 @@ jobs:
   test-HealthCheck:
     needs: build
     runs-on: ubuntu-latest
+    environment: bookstore
     outputs:
       health_status: ${{ steps.set_output.outputs.status }}
 
@@ -93,6 +94,7 @@ jobs:
     needs: test-HealthCheck
     if: ${{ needs.test-HealthCheck.outputs.health_status == 'true' }}
     runs-on: ubuntu-latest
+    environment: bookstore
     outputs:
       contract_status: ${{ steps.set_output.outputs.status }}
 
@@ -136,6 +138,7 @@ jobs:
     needs: test-Contrato
     if: ${{ needs.test-Contrato.outputs.contract_status == 'true' }}
     runs-on: ubuntu-latest
+    environment: bookstore
     continue-on-error: true
     steps:
       - uses: actions/checkout@v4
@@ -167,6 +170,7 @@ jobs:
     needs: test-Contrato
     if: ${{ needs.test-Contrato.outputs.contract_status == 'true' }}
     runs-on: ubuntu-latest
+    environment: bookstore
     continue-on-error: true
     steps:
       - uses: actions/checkout@v4
@@ -196,6 +200,7 @@ jobs:
 
   report:
     runs-on: ubuntu-latest
+    environment: bookstore
     needs: [test-HealthCheck, test-Contrato, test-Funcional, test-Regressao]
     if: always()
     steps:
