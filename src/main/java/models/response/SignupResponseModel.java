@@ -12,7 +12,7 @@ import java.util.List;
 public class SignupResponseModel {
 
     private String userID;
-    private String userName;
+    private String username;
     private List<BookResponseModel> Books;
 
 }

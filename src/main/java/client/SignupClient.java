@@ -1,9 +1,8 @@
 package client;
 
 import io.restassured.http.ContentType;
+import io.restassured.response.Response;
 import models.request.SignupRequestModel;
-import models.response.SignupResponseModel;
-import org.apache.http.HttpStatus;
 
 import static io.restassured.RestAssured.given;
 
@@ -11,7 +10,7 @@ public class SignupClient extends BaseClient {
 
     private final String REGISTER = "/Account/v1/User";
 
-    public SignupResponseModel register(SignupRequestModel signupModel) {
+    public Response register(SignupRequestModel signupModel) {
         return
                 given()
                         .spec(super.set())
@@ -19,10 +18,7 @@ public class SignupClient extends BaseClient {
                         .body(signupModel)
                 .when()
                         .post(REGISTER)
-                .then()
-                        .statusCode(HttpStatus.SC_CREATED)
-                        .extract()
-                        .as(SignupResponseModel.class);
+                ;
     }
 
 }

@@ -106,7 +106,7 @@ public class LoginTest {
 
     @Test
     @Description(CT_LOGIN_006)
-    public void testLoginComPasswordVazio() {
+    public void testLoginComSenhaVazio() {
         LoginRequestModel loginModel = LoginDataFactory.invalidLoginWithEmptyPassword();
 
         String response = loginClient.login(loginModel)
