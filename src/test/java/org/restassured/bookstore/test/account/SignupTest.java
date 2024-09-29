@@ -9,6 +9,7 @@ import models.request.SignupRequestModel;
 import models.response.SignupResponseModel;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import utils.TestListener;
@@ -25,6 +26,8 @@ public class SignupTest {
     private final SignupClient signupClient = new SignupClient();
 
     @Test
+    @Tag("Regression")
+    @Tag("Functional")
     @Description(CT_SIGNUP_001)
     public void testValidarRegistroComSucesso() {
         SignupRequestModel signupUser = SignupDataFactory.validRegister();
@@ -41,6 +44,7 @@ public class SignupTest {
 
 
     @Test
+    @Tag("Regression")
     @Description(CT_SIGNUP_002)
     public void testRegistroComUsernameVazio() {
         SignupRequestModel signupUser = SignupDataFactory.invalidSignupWithEmptyUsername();
@@ -56,6 +60,7 @@ public class SignupTest {
     }
 
     @Test
+    @Tag("Regression")
     @Description(CT_SIGNUP_003)
     public void testRegistroComSenhaVazia() {
         SignupRequestModel signupUser = SignupDataFactory.invalidSignupWithEmptyPassword();

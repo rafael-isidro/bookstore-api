@@ -8,6 +8,7 @@ import io.qameta.allure.Story;
 import models.request.LoginRequestModel;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import utils.TestListener;
@@ -23,6 +24,8 @@ public class CheckAuthorizationTest {
 
 
     @Test
+    @Tag("Regression")
+    @Tag("Functional")
     @Description(CT_CHECK_AUTH_001)
     public void testValidarChecagemAutorizacaoComSucesso() {
         LoginRequestModel login = LoginDataFactory.validLogin();
@@ -38,6 +41,7 @@ public class CheckAuthorizationTest {
     }
 
     @Test
+    @Tag("Regression")
     @Description(CT_CHECK_AUTH_002)
     public void testChecarAutorizacaoDadosInvalidos() {
         LoginRequestModel login = LoginDataFactory.invalidLogin();
@@ -54,6 +58,7 @@ public class CheckAuthorizationTest {
     }
 
     @Test
+    @Tag("Regression")
     @Description(CT_CHECK_AUTH_003)
     public void testChecarAutorizacaoUsernameInvalido() {
         LoginRequestModel login = LoginDataFactory.invalidLoginWithInvalidUsername();
@@ -70,6 +75,7 @@ public class CheckAuthorizationTest {
     }
 
     @Test
+    @Tag("Regression")
     @Description(CT_CHECK_AUTH_004)
     public void testChecarAutorizacaoPasswordInvalido() {
         LoginRequestModel login = LoginDataFactory.invalidLoginWithInvalidPassword();
