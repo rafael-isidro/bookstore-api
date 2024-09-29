@@ -32,6 +32,7 @@ public class LoginTest {
 
     @Test
     @Description(CT_LOGIN_001)
+    @Tag("Health-Check")
     @Tag("Regression")
     @Tag("Functional")
     public void testValidarLoginComSucesso() {
