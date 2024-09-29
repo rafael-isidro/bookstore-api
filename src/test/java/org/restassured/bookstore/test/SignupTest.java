@@ -31,9 +31,9 @@ public class SignupTest {
 
         SignupResponseModel response = signupClient.register(signupUser)
                 .then()
-                .statusCode(HttpStatus.SC_CREATED)
-                .extract()
-                .as(SignupResponseModel.class);
+                    .statusCode(HttpStatus.SC_CREATED)
+                    .extract()
+                    .as(SignupResponseModel.class);
 
         Assertions.assertEquals(signupUser.getUserName(), response.getUsername());
         Assertions.assertNotNull(response.getUserID());
@@ -47,10 +47,10 @@ public class SignupTest {
 
         String response = signupClient.register(signupUser)
                 .then()
-                .statusCode(HttpStatus.SC_BAD_REQUEST)
-                .extract()
-                .path("message")
-                .toString();
+                    .statusCode(HttpStatus.SC_BAD_REQUEST)
+                    .extract()
+                    .path("message")
+                    .toString();
 
         Assertions.assertEquals(EMPTY_CREDENTIALS_FAIL, response);
     }
@@ -62,10 +62,10 @@ public class SignupTest {
 
         String response = signupClient.register(signupUser)
                 .then()
-                .statusCode(HttpStatus.SC_BAD_REQUEST)
-                .extract()
-                .path("message")
-                .toString();
+                    .statusCode(HttpStatus.SC_BAD_REQUEST)
+                    .extract()
+                    .path("message")
+                    .toString();
 
         Assertions.assertEquals(EMPTY_CREDENTIALS_FAIL, response);
 
