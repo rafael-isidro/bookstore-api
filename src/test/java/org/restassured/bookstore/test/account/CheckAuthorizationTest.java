@@ -8,6 +8,7 @@ import io.qameta.allure.Story;
 import models.request.LoginRequestModel;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -17,6 +18,7 @@ import static story.CheckAuthorizationStory.*;
 
 @Epic(EPIC_CHECK_AUTH)
 @Story(USER_STORY_CHECK_AUTH_POST)
+@DisplayName("Endpoint de Checagem de Autorização")
 @ExtendWith(TestListener.class)
 public class CheckAuthorizationTest {
 

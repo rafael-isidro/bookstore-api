@@ -9,6 +9,7 @@ import models.request.LoginRequestModel;
 import models.response.ResponseModel;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -19,6 +20,7 @@ import static story.LoginStory.*;
 
 @Epic(EPIC_LOGIN)
 @Story(USER_STORY_LOGIN_POST)
+@DisplayName("Endpoint de Login")
 @ExtendWith(TestListener.class)
 public class LoginTest {
 
