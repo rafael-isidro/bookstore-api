@@ -9,6 +9,7 @@ import models.request.SignupRequestModel;
 import models.response.SignupResponseModel;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -18,6 +19,7 @@ import static story.SignupStory.*;
 
 @Epic(EPIC_SIGNUP)
 @Story(USER_STORY_SIGNUP_POST)
+@DisplayName("Endpoint de Registro")
 @ExtendWith(TestListener.class)
 public class SignupTest {
 
