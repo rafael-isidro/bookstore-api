@@ -6,6 +6,7 @@ public class LoginStory {
 
     public static final String USER_STORY_LOGIN_POST = "Como usuário, quero realizar login no sistema para poder ter acesso às funcionalidades do sistema.";
 
+    public static final String CT_LOGIN_000 = "CE-00 Validar contrato de login";
     public static final String CT_LOGIN_001 = "CE-01 Validar login com credenciais válidas";
     public static final String CT_LOGIN_002 = "CE-02 Tentar login com username e senha inválidos";
     public static final String CT_LOGIN_003 = "CE-03 Tentar login com senha inválida";

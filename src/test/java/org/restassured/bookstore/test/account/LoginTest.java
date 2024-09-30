@@ -14,6 +14,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import utils.TestListener;
 
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static story.LoginStory.*;
 
 @Epic(EPIC_LOGIN)
@@ -29,6 +30,18 @@ public class LoginTest {
     private static final String EMPTY_CREDENTIALS_FAIL = "UserName and Password required.";
 
     private final LoginClient loginClient = new LoginClient();
+
+    @Test
+    @Description(CT_LOGIN_000)
+    @Tag("Contract")
+    public void testValidarContratoLogin() {
+        LoginRequestModel loginModel = LoginDataFactory.validLogin();
+
+        loginClient.login(loginModel)
+                .then()
+                    .body(matchesJsonSchemaInClasspath("schemas/login-post.json"));
+
+    }
 
     @Test
     @Description(CT_LOGIN_001)
