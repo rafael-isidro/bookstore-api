@@ -272,6 +272,7 @@ jobs:
 
   python-test:
     runs-on: ubuntu-latest
+    environment: bookstore
     needs: report
     if: always()
     steps:
