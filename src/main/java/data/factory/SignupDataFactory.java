@@ -6,8 +6,7 @@ import utils.Manipulation;
 
 public class SignupDataFactory {
 
-    public static final String INVALID_USERNAME = "###";
-    public static final String INVALID_PASSWORD = "1";
+    public static final String COMPLEM_PASSWORD = "1A$";
     public static final String USER_LOGIN_PROP = "USER_LOGIN";
 
     private static Faker faker = new Faker();
@@ -17,7 +16,7 @@ public class SignupDataFactory {
         SignupRequestModel register = new SignupRequestModel();
 
         register.setUserName(faker.name().username());
-        register.setPassword(faker.internet().password() + "A#");
+        register.setPassword(faker.internet().password() + COMPLEM_PASSWORD);
 
         return register;
     }

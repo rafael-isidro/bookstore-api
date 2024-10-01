@@ -62,6 +62,7 @@ jobs:
           mkdir -p src/main/resources
           echo "USER_LOGIN=${{ secrets.USER_LOGIN }}" >> src/main/resources/application-config.properties
           echo "USER_PSW=${{ secrets.USER_PSW }}" >> src/main/resources/application-config.properties
+          echo "USER_ID=${{ secrets.USER_ID }}" >> src/main/resources/application-config.properties
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
@@ -106,6 +107,7 @@ jobs:
           mkdir -p src/main/resources
           echo "USER_LOGIN=${{ secrets.USER_LOGIN }}" >> src/main/resources/application-config.properties
           echo "USER_PSW=${{ secrets.USER_PSW }}" >> src/main/resources/application-config.properties
+          echo "USER_ID=${{ secrets.USER_ID }}" >> src/main/resources/application-config.properties
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
@@ -148,6 +150,7 @@ jobs:
           mkdir -p src/main/resources
           echo "USER_LOGIN=${{ secrets.USER_LOGIN }}" >> src/main/resources/application-config.properties
           echo "USER_PSW=${{ secrets.USER_PSW }}" >> src/main/resources/application-config.properties
+          echo "USER_ID=${{ secrets.USER_ID }}" >> src/main/resources/application-config.properties
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
@@ -180,6 +183,7 @@ jobs:
           mkdir -p src/main/resources
           echo "USER_LOGIN=${{ secrets.USER_LOGIN }}" >> src/main/resources/application-config.properties
           echo "USER_PSW=${{ secrets.USER_PSW }}" >> src/main/resources/application-config.properties
+          echo "USER_ID=${{ secrets.USER_ID }}" >> src/main/resources/application-config.properties
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4

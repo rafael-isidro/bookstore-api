@@ -1,4 +1,4 @@
-package org.restassured.bookstore.test.account;
+package org.restassured.bookstore.test;
 
 import client.LoginClient;
 import data.factory.LoginDataFactory;
