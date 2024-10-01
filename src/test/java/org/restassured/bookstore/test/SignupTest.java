@@ -1,4 +1,4 @@
-package org.restassured.bookstore.test.account;
+package org.restassured.bookstore.test;
 
 import client.SignupClient;
 import data.factory.SignupDataFactory;
@@ -9,6 +9,8 @@ import models.request.SignupRequestModel;
 import models.response.SignupResponseModel;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import utils.TestListener;
@@ -17,6 +19,7 @@ import static story.SignupStory.*;
 
 @Epic(EPIC_SIGNUP)
 @Story(USER_STORY_SIGNUP_POST)
+@DisplayName("Endpoint de Registro")
 @ExtendWith(TestListener.class)
 public class SignupTest {
 
@@ -25,6 +28,8 @@ public class SignupTest {
     private final SignupClient signupClient = new SignupClient();
 
     @Test
+    @Tag("Regression")
+    @Tag("Functional")
     @Description(CT_SIGNUP_001)
     public void testValidarRegistroComSucesso() {
         SignupRequestModel signupUser = SignupDataFactory.validRegister();
@@ -41,6 +46,7 @@ public class SignupTest {
 
 
     @Test
+    @Tag("Regression")
     @Description(CT_SIGNUP_002)
     public void testRegistroComUsernameVazio() {
         SignupRequestModel signupUser = SignupDataFactory.invalidSignupWithEmptyUsername();
@@ -56,6 +62,7 @@ public class SignupTest {
     }
 
     @Test
+    @Tag("Regression")
     @Description(CT_SIGNUP_003)
     public void testRegistroComSenhaVazia() {
         SignupRequestModel signupUser = SignupDataFactory.invalidSignupWithEmptyPassword();
