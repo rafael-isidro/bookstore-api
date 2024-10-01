@@ -1,4 +1,4 @@
-package org.restassured.bookstore.test.account;
+package org.restassured.bookstore.test;
 
 import client.LoginClient;
 import data.factory.LoginDataFactory;
@@ -9,14 +9,18 @@ import models.request.LoginRequestModel;
 import models.response.ResponseModel;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import utils.TestListener;
 
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static story.LoginStory.*;
 
 @Epic(EPIC_LOGIN)
 @Story(USER_STORY_LOGIN_POST)
+@DisplayName("Endpoint de Login")
 @ExtendWith(TestListener.class)
 public class LoginTest {
 
@@ -30,7 +34,22 @@ public class LoginTest {
     private final LoginClient loginClient = new LoginClient();
 
     @Test
+    @Description(CT_LOGIN_000)
+    @Tag("Contract")
+    public void testValidarContratoLogin() {
+        LoginRequestModel loginModel = LoginDataFactory.validLogin();
+
+        loginClient.login(loginModel)
+                .then()
+                    .body(matchesJsonSchemaInClasspath("schemas/login-post.json"));
+
+    }
+
+    @Test
     @Description(CT_LOGIN_001)
+    @Tag("Health-Check")
+    @Tag("Regression")
+    @Tag("Functional")
     public void testValidarLoginComSucesso() {
         LoginRequestModel loginModel = LoginDataFactory.validLogin();
 
@@ -45,6 +64,7 @@ public class LoginTest {
     }
 
     @Test
+    @Tag("Regression")
     @Description(CT_LOGIN_002)
     public void testLoginComDadosInvalidos() {
         LoginRequestModel loginModel = LoginDataFactory.invalidLogin();
@@ -60,6 +80,7 @@ public class LoginTest {
     }
 
     @Test
+    @Tag("Regression")
     @Description(CT_LOGIN_003)
     public void testLoginComSenhaInvalida() {
         LoginRequestModel loginModel = LoginDataFactory.invalidLoginWithInvalidPassword();
@@ -75,6 +96,7 @@ public class LoginTest {
     }
 
     @Test
+    @Tag("Regression")
     @Description(CT_LOGIN_004)
     public void testLoginComUsernameInvalida() {
         LoginRequestModel loginModel = LoginDataFactory.invalidLoginWithInvalidUsername();
@@ -90,6 +112,7 @@ public class LoginTest {
     }
 
     @Test
+    @Tag("Regression")
     @Description(CT_LOGIN_005)
     public void testLoginComUsernameVazio() {
         LoginRequestModel loginModel = LoginDataFactory.invalidLoginWithEmptyUsername();
@@ -105,6 +128,7 @@ public class LoginTest {
     }
 
     @Test
+    @Tag("Regression")
     @Description(CT_LOGIN_006)
     public void testLoginComSenhaVazio() {
         LoginRequestModel loginModel = LoginDataFactory.invalidLoginWithEmptyPassword();
