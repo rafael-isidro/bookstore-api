@@ -1,5 +1,0 @@
-"Epic","Feature","Story","FAILED","BROKEN","PASSED","SKIPPED","UNKNOWN"
-"Books","","Como usuário logado, quero listar todos os livros para verificar suas informações registradas.","0","0","2","0","0"
-"Check Authorization","","Como usuário, quero informar credenciais para poder verificar se possuo autorização para acessar o sistema.","0","0","4","0","0"
-"Login","","Como usuário, quero realizar login no sistema para poder ter acesso às funcionalidades do sistema.","0","0","7","0","0"
-"Sign Up","","Como usuário, quero realizar cadastro no sistema para poder logar no sistema.","0","0","3","0","0"
