@@ -1,10 +1,6 @@
 name: API Relatorios Allure - Bookstore
 
 on:
-  schedule:
-    - cron: '50 09 * * *'
-    - cron: '50 15 * * *'
-    - cron: '50 21 * * *'
   push:
     branches:
       - hml
